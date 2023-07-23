@@ -55,6 +55,36 @@ public class TicTacToeGame {
 
         Game game = gameController.createGame(dimensions, player);
 
-        System.out.println("Hello World");
+        // Players will start the game
+
+        while(game.getStatus().equals(GameStatus.IN_PROGRESS)){
+
+            System.out.println("This is the current Board");
+
+            gameController.displayBoard(game);
+
+            System.out.println("Do you want to undo : (y/n)");
+
+            String undo = sc.nextLine();
+
+            if(undo.equals("y")){
+                gameController.undo(game);
+            }
+            else{
+                gameController.executeNextMove(game);
+            }
+
+
+        }
+
+        // Some one has won the game or game became draw
+
+        if(game.getStatus().equals(GameStatus.ENDED)){
+            if(gameController.getWinner(game) != null){
+            System.out.println("Winner of the game is " + gameController.getWinner(game).getPlayerName());}
+            else {
+                System.out.println("Game is Draw nobody is winner");
+            }
+        }
     }
 }
