@@ -37,6 +37,21 @@ public class orderOneWiningStarategy implements GameWiningStrategy {
 
         return row + col - 1 == dimension;
     }
+
+    public void undoWining(int row, int col, Player player, int dimensions){
+
+        if(isTopRightDigonal(row, col,dimensions) && rightDigonal.containsKey(player.getSymbol())){
+
+            rightDigonal.put(player.getSymbol(), rightDigonal.get(player.getSymbol()) -1);
+        }
+        if(isTopLeftDigonal(row, col,dimensions) && leftDigonal.containsKey(player.getSymbol())){
+
+            leftDigonal.put(player.getSymbol(), leftDigonal.get(player.getSymbol()) -1);
+        }
+
+        rowCheck.get(row).put(player.getSymbol(), rowCheck.get(row).get(player.getSymbol()) - 1);
+        colCheck.get(col).put(player.getSymbol(), colCheck.get(col).get(player.getSymbol()) - 1);
+    }
     @Override
     public boolean checkWinner(Board board, Player player, Cell cell) {
 

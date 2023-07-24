@@ -47,6 +47,31 @@ public class Game {
         this.board = board;
     }
 
+    public void undo(){
+        Move undoMove = this.moves.get(moves.size() - 1);
+        moves.remove(moves.size() - 1);
+
+        Cell undoCell = undoMove.getCell();
+
+        int row = undoCell.getRow();
+        int col = undoCell.getCol();
+
+        board.getBoard().get(row).get(col).setState(CellState.EMPTY);
+        board.getBoard().get(row).get(col).setPlayer(null);
+
+        gameWiningStrategy.undoWining(row,col, undoMove.getPlayer(), board.getBoard().size());
+
+        int i = 0;
+        for(Player player1 : player){
+            if (player1 == undoMove.getPlayer()) {
+                nextPlayerIndex = i;
+                break;
+            }
+            i++;
+        }
+
+    }
+
 
     public void makeNextMove(){
         // which player turn is this ?
