@@ -1,5 +1,6 @@
 # TicTacToe
-This repository show my skills on Design Patterns by using in the real world problem.
+# Clone the Project in Local Machine and use intillij Idea to play the cool Tic Tac Toe Game.
+
 ![image](https://github.com/RohanAgrawa/TicTacToe/assets/101562278/354c2267-10c2-4464-99a6-b81c10e0cf42)
 
 
