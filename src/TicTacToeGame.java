@@ -74,7 +74,6 @@ public class TicTacToeGame {
                 gameController.executeNextMove(game);
             }
 
-
         }
 
         // Some one has won the game or game became draw
